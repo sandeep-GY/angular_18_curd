@@ -17,8 +17,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                     <tr *ngFor="let item of employeeList; let i = index; trackBy: trackByIndex">
-                      <td>{{ i + 1 }}</td>
+                     <tr *ngFor="let item of employeeList">
+                      <td>{{ item.empId }}</td>
                       <td>{{ item.name }}</td>
                       <td>{{ item.contactNo }}</td>
                       <td>{{ item.emailId }}</td>
@@ -74,32 +74,12 @@
           
            <div class="row pt-2">
               <div class="col-6 text-center">
-                 <button class="btn-btn-success">Reset</button>
+                <!-- <button type="button" class="btn btn-success" (click)="onsave()">Save Employee</button>
+                 <button type="button" class="btn-btn-success">Reset</button> -->
               </div>
               <div class="col-6 text-center">
-                 <button class="btn btn-success" (click)="onsave()">Save Employee</button>
-                <!-- @if(employeeForm.controls["empid"].value =='1')
-                {
- <button class="btn-btn-success" (click)="onsave()">Save Employee</button>
-                }
-                else{
- <button class="btn-btn-warning" (click)="onUpdate()">Update Employee</button>
-                } -->
-                 <!-- <div *ngIf="employeeForm.controls['empid'].value ==1; then showBlock; else hideBlock">
-                   <button class="btn-btn-success" (click)="onsave()">Save Employee</button>
-                     <ng-template #showBlock>
-                        <button class="btn-btn-success" (click)="onsave()">Save Employee</button>
-                     </ng-template>
-
-                     <ng-template #hideBlock>
-                        <button class="btn-btn-success" (click)="onUpdate()">Update Employee</button>
-                     </ng-template>
-                </div> -->
-                 @if (employeeForm.controls['empid'].value == 1) {
-  <button class="btn btn-success" (click)="onsave()">Save Employee</button>
-} @else {
-  <button class="btn btn-success" (click)="onUpdate()">Update Employee</button>
-}
+                <button *ngIf="showUpdateButton" type="button" class="btn btn-success" (click)="onUpdate()">Update Employee</button>
+                <button *ngIf="!showUpdateButton" type="button" class="btn btn-success" (click)="onsave()">Save Employee</button>
              </div>
             </div>  
           </form>
